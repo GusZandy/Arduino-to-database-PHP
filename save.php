@@ -19,10 +19,12 @@
   //database properties
   $db_address = "localhost";
   $db_name = "learn-php";
+  $db_table_name = "SensorLogger";
   $db_username = "root";
   $db_password = "root";
   $device_id = "12345";
   $locale = "id";
+  
 
   //set locale time & get datetime
   Carbon::setLocale($locale);
@@ -46,7 +48,7 @@
   //authentication deviceId
 
   if ($request->device_ID == $device_id) {
-      $query = "INSERT INTO `SensorLogger` (`Device_ID`, `Timestamp`, `Temperature`, `Humidity`) VALUES ('".$request->device_ID."','".$request->timestamp."','".$request->temperature."','".$request->humidity."')";
+      $query = "INSERT INTO `$db_table_name` (`Device_ID`, `Timestamp`, `Temperature`, `Humidity`) VALUES ('".$request->device_ID."','".$request->timestamp."','".$request->temperature."','".$request->humidity."')";
 
       mysqli_query($db_connection, $query);
 
